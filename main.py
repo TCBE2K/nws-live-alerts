@@ -1,6 +1,15 @@
 import requests
 import json
 import time
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+latitude = os.getenv("LATITUDE")
+longitude = os.getenv("LONGITUDE")
+chatId = os.getenv("TELEGRAM_CHAT_ID")
+botToken = os.getenv("TELEGRAM_BOT_TOKEN")
 
 def get_weather_alerts(latitude, longitude):
   """
@@ -22,14 +31,6 @@ def get_weather_alerts(latitude, longitude):
   return data["features"]
 
 if __name__ == "__main__":
-  # Replace with your latitude and longitude
-  latitude = LATITUDE
-  longitude = LONGITUDE
-
-  chatId = TELEGRAMCHATID
-  botToken = BOTTOKEN
-
-
   # Get the initial list of alerts
   initial_alerts = get_weather_alerts(latitude, longitude)
 
